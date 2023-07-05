@@ -1,6 +1,7 @@
 from telebot import TeleBot
 from dotenv import load_dotenv
 import os
+from stt import data
 
 load_dotenv()
 
@@ -25,7 +26,7 @@ def voice_message_handler(message):
     file_info = bot.get_file(file_id)
     file_path = file_info.file_path  # file path on Telegram server
     url = f"https://api.telegram.org/file/bot{bot.token}/{file_path}"
-    print(url)
-    return url
+    trans = data(url)
+    print(trans)
 
 bot.polling()
